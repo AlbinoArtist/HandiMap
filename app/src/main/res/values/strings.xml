@@ -93,4 +93,31 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_new_review">NewReviewActivity</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis aliquam urna. Nunc rutrum lacus vel ex laoreet, vitae vehicula neque condimentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus mauris velit, sagittis sagittis dictum nec, gravida quis lorem. Suspendisse bibendum vel ligula et porta. Nulla erat velit, cursus eget augue et, ullamcorper tristique purus. Fusce lobortis, mi ut euismod molestie, lorem neque auctor augue, non venenatis purus mauris at justo. Etiam eleifend finibus dolor non lacinia. Sed ut enim tempus, vulputate risus at, accumsan mi. Integer feugiat dolor eget diam efficitur, a dignissim ligula blandit. Curabitur quis tristique erat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed vitae fringilla eros, id posuere augue. Aliquam erat volutpat. Nulla in turpis sapien. Sed ullamcorper non nibh et consectetur.</string>
+    <string-array name="type_entry_options">
+        <item>Välj: </item>
+        <item>Huvudingång</item>
+        <item>Specialingång</item>
+    </string-array>
+    <string-array name="extra_time_options">
+        <item>Välj: </item>
+        <item>Kortare än 2 min</item>
+        <item>2 min</item>
+        <item>5 min</item>
+        <item>8 min</item>
+        <item>Längre än 8 min</item>
+    </string-array>
+    <string-array name="elevator_options">
+        <item>Välj: </item>
+        <item>Ja</item>
+        <item>Nej</item>
+        <item>Ej anpassad</item>
+    </string-array>
+    <string-array name="toilet_options">
+        <item>Välj:</item>
+        <item>Ja</item>
+        <item>Nej</item>
+        <item>Ej lätt tillgänglig</item>
+    </string-array>
+
 </resources>

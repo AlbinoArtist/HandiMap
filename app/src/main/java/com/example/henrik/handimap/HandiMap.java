@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,6 +18,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -38,9 +41,11 @@ public class HandiMap extends FragmentActivity implements OnMapReadyCallback {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(getBaseContext(),NewReviewActivity.class);
+                startActivity(intent);
             }
         });
+
 
     }
 
@@ -54,6 +59,10 @@ public class HandiMap extends FragmentActivity implements OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    static final LatLng ikdc = new LatLng(55.71499564, 13.21251869);
+    static final LatLng nr1 = new LatLng(55.71149016, 13.2094717);
+    static final LatLng nr2 = new LatLng(55.71106706, 13.21039438);
+    static final LatLng nr3 = new LatLng(55.71214293, 13.21153164);
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -67,22 +76,73 @@ public class HandiMap extends FragmentActivity implements OnMapReadyCallback {
             @Override
             public View getInfoContents(Marker marker) {
                 View v = getLayoutInflater().inflate(R.layout.rating_info_card,null);
-                RatingBar r = (RatingBar)v.findViewById(R.id.ratingBar);
-                r.setRating(4);
+                if (marker.getPosition().equals(ikdc)){
+                    TextView byggnadsNamn = (TextView)v.findViewById(R.id.byggnadsnamn);
+                    byggnadsNamn.setText("IKDC");
+
+                    TextView address = (TextView)v.findViewById(R.id.address);
+                    address.setText("Sölvegatan 26, 223 62 Lund");
+                    RatingBar r = (RatingBar)v.findViewById(R.id.stars);
+                    r.setRating(5);
+                }
+                else if(marker.getPosition().equals(nr1)){
+                    TextView byggnadsNamn = (TextView)v.findViewById(R.id.byggnadsnamn);
+                    byggnadsNamn.setText("Byggnad 1");
+                    TextView address = (TextView)v.findViewById(R.id.address);
+                    address.setText("Sölvegatan 18, 223 62 Lund");
+                    RatingBar r = (RatingBar)v.findViewById(R.id.stars);
+                    r.setRating(2);
+
+                }
+                else if(marker.getPosition().equals(nr2)){
+                    TextView byggnadsNamn = (TextView)v.findViewById(R.id.byggnadsnamn);
+                    byggnadsNamn.setText("Byggnad 2");
+                    TextView address = (TextView)v.findViewById(R.id.address);
+                    address.setText("Sölvegatan 8, 223 62 Lund");
+                    RatingBar r = (RatingBar)v.findViewById(R.id.stars);
+                    r.setRating(2);
+
+                }
+                else if(marker.getPosition().equals(nr3)){
+                    TextView byggnadsNamn = (TextView)v.findViewById(R.id.byggnadsnamn);
+                    byggnadsNamn.setText("Byggnad 3");
+                    TextView address = (TextView)v.findViewById(R.id.address);
+                    address.setText("Sölvegatan 2, 223 62 Lund");
+                    RatingBar r = (RatingBar)v.findViewById(R.id.stars);
+                    r.setRating(3);
+
+                }
                 return v;
             }
 
+
         });
+        mMap.getUiSettings().setMapToolbarEnabled(false);
+        mMap.setMyLocationEnabled(true);
+        mMap.addMarker(new MarkerOptions().position(nr1));
+        mMap.addMarker(new MarkerOptions().position(nr2));
+        mMap.addMarker(new MarkerOptions().position(nr3));
+        mMap.addMarker(new MarkerOptions().position(ikdc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-34, 151)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-5, 155)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-34, 156)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(-33, 171)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                startActivity(new Intent(getBaseContext(),ReviewList.class));
+            }
+        });
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(55.71214293, 13.21153164)));
+        mMap.moveCamera(CameraUpdateFactory.zoomTo(15f));
 
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+    public void showStep2(View v){
+        v.setVisibility(View.GONE);
+        findViewById(R.id.frame2).setVisibility(View.VISIBLE);
+    }
+    public void showStep3(View v){
+        v.setVisibility(View.GONE);
+        findViewById(R.id.frame3).setVisibility(View.VISIBLE);
+    }
+    public void finalStep(View v){
+        v.setVisibility(View.GONE);
     }
 }

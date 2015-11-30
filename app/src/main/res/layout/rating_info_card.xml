@@ -6,7 +6,8 @@
     tools:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:padding="6dp"
+
+    android:id="@+id/topLayoutCard"
     >
     <ImageView
         android:layout_width="wrap_content"
@@ -23,30 +24,56 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/header.text.size"
             android:text="BYGGNADSNAMN"
-            android:id="@+id/textView"
-            android:paddingBottom="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textColor="@android:color/white"
+            android:paddingLeft="5dp"
+            android:id="@+id/byggnadsnamn"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gatnamn 1, STAD 999999"/>
+            android:text="Gatnamn 1, STAD 999999"
+            android:id="@+id/address"
+            android:paddingLeft="5dp"/>
+
+        <RatingBar
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/stars"
+            android:layout_gravity="center"
+            android:numStars="5"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:progressTint="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent"
+            android:progressBackgroundTint="@color/colorAccent"
+            android:stepSize="1"
+            android:isIndicator="true"
+            android:layout_marginBottom="-5dp"
+
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Antal betyg: 5"/>
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
-            android:rating="5"/>
+            android:text="Antal betyg: 5"
+            android:id="@+id/numberOfReviews"
+            android:gravity="center"/>
         <TextView
+            android:paddingTop="10dp"
             android:textAlignment="textEnd"
             android:layout_gravity="end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Klicka för att se mer"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="@color/blueLink"
+            android:textSize="18sp"/>
     </LinearLayout>
 
 </LinearLayout>

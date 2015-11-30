@@ -30,7 +30,7 @@
 
         <activity
             android:name=".HandiMap"
-            android:label="@string/title_activity_handi_map"
+            android:label="HandiMap"
             android:theme="@style/AppTheme.NoActionBar" >
 >
             <intent-filter>
